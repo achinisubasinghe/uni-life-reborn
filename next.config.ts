@@ -1,8 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: false,
+  turbopack: {
+    resolveAlias: {
+      "firebase/firestore": "./node_modules/@firebase/firestore/dist/index.esm.js",
+      "@firebase/firestore": "./node_modules/@firebase/firestore/dist/index.esm.js",
+    },
+  },
   images: {
     remotePatterns: [
       {
@@ -20,3 +25,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+import("@opennextjs/cloudflare").then((m) => m.initOpenNextCloudflareForDev());
