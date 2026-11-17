@@ -11,7 +11,7 @@ The application serves three roles across dedicated route groups, backed by Fire
 | `/` | Landing page with university selection and featured categories |
 | `/browse` | Public directory with search, category, price range, and rating filters |
 | `/business/[id]` | Business detail page with photos, hours, contact info, map location, and reviews |
-| `/chat` | UniBot campus assistant powered by Groq `llama-3.3-70b-versatile` |
+| `/chat` | UniBot campus assistant powered by Groq `qwen/qwen3.8-27b` |
 | `/student/dashboard` | Student overview, saved favorites, and submitted reviews |
 | `/provider/onboarding` | Three-step onboarding flow for new business owners |
 | `/provider/dashboard` | Provider portal for managing business listings and responding to reviews |
@@ -23,15 +23,16 @@ The application serves three roles across dedicated route groups, backed by Fire
 - **Student favorites and reviews.** Save businesses to a personal favorites list and post star ratings with written feedback.
 - **Provider onboarding and portal.** Submit business profiles with photos, operating hours, amenities, pricing, and map coordinates, and track approval status.
 - **Admin moderation.** Review pending business submissions, approve or reject listings, and moderate flagged reviews.
-- **UniBot chat assistant.** Ask natural-language questions about nearby campus services through `POST /api/chat` and Groq `llama-3.3-70b-versatile`.
+- **UniBot chat assistant.** Ask natural-language questions about nearby campus services through `POST /api/chat` and Groq `qwen/qwen3.8-27b`.
 
 ## Tech stack
 
 - [Next.js](https://nextjs.org) 16 App Router and [React](https://react.dev) 19
-- [TypeScript](https://www.typescriptlang.org) 5
+- [TypeScript](https://www.typescriptlang.org) 7
 - [Tailwind CSS](https://tailwindcss.com) 4, Radix UI, Lucide icons, Framer Motion, and Recharts
 - [Firebase](https://firebase.google.com) Authentication, Cloud Firestore, and Firebase Admin SDK
-- [Groq SDK](https://console.groq.com) with `llama-3.3-70b-versatile`
+- [Groq SDK](https://console.groq.com) with `qwen/qwen3.8-27b`
+- [OpenNext](https://opennext.js.org/cloudflare) on [Cloudflare Workers](https://developers.cloudflare.com/workers/)
 - [Bun](https://bun.sh)
 
 ## Getting started
