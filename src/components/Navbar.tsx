@@ -44,7 +44,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Desktop navbar — floating pill */}
       <nav
         className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden md:flex items-center justify-between gap-1 px-6 py-2 rounded-full w-[900px] transition-all duration-500 ${scrolled
           ? 'glass-strong shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
@@ -87,7 +86,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile navbar */}
       <nav className="fixed top-4 left-4 right-4 z-50 flex md:hidden items-center justify-between px-5 py-3 rounded-2xl glass">
         <Link href="/" className="flex items-center gap-2">
           <div className="w-6 h-6 rounded-lg bg-white/10 flex items-center justify-center">
@@ -104,7 +102,6 @@ const Navbar = () => {
         </button>
       </nav>
 
-      {/* Mobile menu overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -161,7 +158,7 @@ const Navbar = () => {
                   onClick={() => setMobileOpen(false)}
                   className="w-full text-center py-3 rounded-2xl bg-white text-black font-semibold text-base hover:bg-white/90 transition-colors"
                 >
-                  Sign up free
+                  Sign up
                 </Link>
               </div>
             </motion.div>

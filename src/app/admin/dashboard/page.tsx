@@ -71,10 +71,8 @@ export default function AdminDashboard() {
         action === "reject" ? "Does not meet our guidelines" : undefined
       );
       
-      // Remove from pending list
       setPendingBusinesses(prev => prev.filter(b => b.id !== businessId));
       
-      // Update stats
       if (stats) {
         setStats({
           ...stats,
@@ -102,7 +100,6 @@ export default function AdminDashboard() {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
       <div>
         <h1 className="text-2xl font-bold">Admin Dashboard</h1>
         <p className="text-muted-foreground mt-1">
@@ -110,7 +107,6 @@ export default function AdminDashboard() {
         </p>
       </div>
 
-      {/* Stats Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card>
           <CardContent className="pt-6">
@@ -169,7 +165,6 @@ export default function AdminDashboard() {
         </Card>
       </div>
 
-      {/* User Breakdown */}
       <div className="grid md:grid-cols-3 gap-4">
         <Card>
           <CardContent className="pt-6 flex items-center justify-between">
@@ -202,7 +197,6 @@ export default function AdminDashboard() {
         </Card>
       </div>
 
-      {/* Pending Approvals */}
       <section>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold flex items-center gap-2">
@@ -259,14 +253,13 @@ export default function AdminDashboard() {
           <Card>
             <CardContent className="py-8 text-center">
               <CheckCircle className="h-12 w-12 mx-auto text-green-500 mb-3" />
-              <p className="text-lg font-medium">All caught up!</p>
-              <p className="text-muted-foreground">No pending approvals at the moment.</p>
+              <p className="text-lg font-medium">No pending approvals</p>
+              <p className="text-muted-foreground">Pending submissions appear here.</p>
             </CardContent>
           </Card>
         )}
       </section>
 
-      {/* Reported Reviews */}
       {reportedReviews.length > 0 && (
         <section>
           <div className="flex items-center justify-between mb-4">

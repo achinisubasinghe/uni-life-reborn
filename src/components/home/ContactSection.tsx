@@ -7,23 +7,23 @@ import { Mail, Phone, MapPin, ChevronDown, Send } from "lucide-react";
 const faqs = [
   {
     q: "Is UniLife free to use?",
-    a: "Yes — UniLife is completely free for students. There are no hidden fees, no premium tiers, and no ads. It will always remain free for students.",
+    a: "Yes. UniLife is free for students, with no hidden fees, paid tiers, or ads.",
   },
   {
     q: "How are businesses verified?",
-    a: "Our team manually reviews every submitted business before it appears in listings. We verify contact details, location accuracy, and that the business genuinely serves students.",
+    a: "Our team reviews each submitted business before listing it, checking contact details, location accuracy, and student service suitability.",
   },
   {
     q: "Which universities are currently supported?",
-    a: "We currently support NSBM Green University, University of Colombo, and University of Sri Jayewardenepura. We are actively working to expand to more campuses.",
+    a: "UniLife supports NSBM Green University, University of Colombo, and University of Sri Jayewardenepura, with more campuses planned.",
   },
   {
     q: "Can I leave reviews for businesses?",
-    a: "Yes! Once you create a free student account, you can leave ratings and written reviews for any business you visit.",
+    a: "Yes. After creating a free student account, you can rate and review any listed business.",
   },
   {
     q: "How do I list my business on UniLife?",
-    a: "Sign up as a service provider, fill in your business details, and submit for review. Once approved by our team, your listing will go live for students to discover.",
+    a: "Sign up as a service provider, enter your business details, and submit your listing for review. Once approved, students can find it in the directory.",
   },
 ];
 
@@ -69,11 +69,9 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="relative py-28 px-6 overflow-hidden">
-      {/* orb */}
       <div className="orb w-[600px] h-[600px] bg-teal-800 bottom-[-10%] left-[-10%]" style={{ opacity: 0.08 }} />
 
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -84,13 +82,11 @@ export default function ContactSection() {
           <p className="text-amber-300 text-sm font-medium tracking-widest uppercase mb-3">Contact</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Get in touch</h2>
           <p className="text-white/50 text-lg max-w-xl mx-auto">
-            Have a question, suggestion, or want to list your business? We&apos;d love to hear from you.
+            Questions, suggestions, or business listing inquiries? Send us a message.
           </p>
         </motion.div>
 
-        {/* Top grid — form + info */}
         <div className="grid lg:grid-cols-5 gap-6 mb-10">
-          {/* Contact form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -103,8 +99,8 @@ export default function ContactSection() {
                 <div className="glass rounded-full p-4 mb-4">
                   <Send className="w-8 h-8 text-amber-300" />
                 </div>
-                <h3 className="text-white text-xl font-semibold mb-2">Message sent!</h3>
-                <p className="text-white/50 text-sm">We&apos;ll get back to you within 24 hours.</p>
+                <h3 className="text-white text-xl font-semibold mb-2">Message sent</h3>
+                <p className="text-white/50 text-sm">We will reply within 24 hours.</p>
                 <button
                   onClick={() => { setSent(false); setForm({ name: "", email: "", message: "" }); }}
                   className="mt-6 text-amber-300 text-sm hover:text-amber-200 transition-colors"
@@ -160,7 +156,6 @@ export default function ContactSection() {
             )}
           </motion.div>
 
-          {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -179,7 +174,7 @@ export default function ContactSection() {
                 icon: Phone,
                 label: "Phone",
                 value: "+94 77 123 4567",
-                sub: "Mon – Fri, 9 am – 6 pm",
+                sub: "Monday to Friday, 9 am to 6 pm",
               },
               {
                 icon: MapPin,
@@ -208,7 +203,6 @@ export default function ContactSection() {
           </motion.div>
         </div>
 
-        {/* FAQ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

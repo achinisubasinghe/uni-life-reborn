@@ -10,7 +10,7 @@ const reviews = [
     initials: "HP",
     rating: 5,
     review:
-      "Found an amazing hostel just 5 minutes from campus within minutes of signing up. The verified listings gave me so much peace of mind as a first-year student.",
+      "Found an affordable hostel five minutes from campus after signing up. The verified details saved me several wasted visits in my first week.",
     service: "Hostels",
   },
   {
@@ -19,7 +19,7 @@ const reviews = [
     initials: "KS",
     rating: 5,
     review:
-      "As someone who didn't know Colombo at all, finding affordable restaurants was my biggest stress. UniLife solved that on day one. Absolute game changer.",
+      "Moving to Colombo without knowing the area made finding cheap meals difficult. UniLife helped me locate several reliable spots near campus on my first day.",
     service: "Restaurants",
   },
   {
@@ -28,7 +28,7 @@ const reviews = [
     initials: "SF",
     rating: 5,
     review:
-      "Had a minor medical emergency and needed a pharmacy late at night. Found one nearby in seconds. I always keep UniLife bookmarked now.",
+      "I needed a pharmacy late at night after a minor injury and located one open nearby within seconds.",
     service: "Pharmacies",
   },
   {
@@ -37,7 +37,7 @@ const reviews = [
     initials: "RJ",
     rating: 5,
     review:
-      "The platform is super clean and fast. Everything is well organized by category and I love that the listings are actually verified — no outdated info.",
+      "Everything is arranged by category and the verified listings match actual opening hours and contact numbers.",
     service: "General",
   },
   {
@@ -46,7 +46,7 @@ const reviews = [
     initials: "AW",
     rating: 5,
     review:
-      "I use it every week to check prices at nearby supermarkets before I go shopping. It has literally saved me money every single month.",
+      "I check nearby supermarket prices here before shopping each week to stay within my monthly budget.",
     service: "Supermarkets",
   },
   {
@@ -55,7 +55,7 @@ const reviews = [
     initials: "TP",
     rating: 4,
     review:
-      "Found a great salon near campus with fair prices. The reviews from other students helped me decide quickly. Would love to see more categories added soon!",
+      "Found a salon near campus with clear pricing. Reading student reviews made picking a place straightforward.",
     service: "Salons",
   },
 ];
@@ -85,11 +85,9 @@ const item = {
 export default function PeopleSection() {
   return (
     <section id="people" className="relative py-28 px-6 overflow-hidden">
-      {/* orb */}
       <div className="orb w-[500px] h-[500px] bg-amber-700 top-0 right-[-5%]" style={{ opacity: 0.1 }} />
 
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,11 +98,10 @@ export default function PeopleSection() {
           <p className="text-amber-300 text-sm font-medium tracking-widest uppercase mb-3">People</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">What students are saying</h2>
           <p className="text-white/50 text-lg max-w-xl mx-auto">
-            Hear from real students who use UniLife every day across Sri Lankan universities.
+            Feedback from students using UniLife across Sri Lankan universities.
           </p>
         </motion.div>
 
-        {/* Cards grid */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -118,23 +115,18 @@ export default function PeopleSection() {
               variants={item}
               className="glass glass-sheen rounded-2xl p-6 flex flex-col gap-4 hover:bg-white/[0.07] transition-all duration-300 hover:scale-[1.01]"
             >
-              {/* Quote icon */}
               <Quote className="w-6 h-6 text-amber-300/60 flex-shrink-0" />
 
-              {/* Review text */}
               <p className="text-white/65 text-sm leading-relaxed flex-1">"{r.review}"</p>
 
-              {/* Service badge */}
               <div className="inline-flex self-start">
                 <span className="glass rounded-full px-3 py-1 text-xs text-amber-300 font-medium">
                   {r.service}
                 </span>
               </div>
 
-              {/* Divider */}
               <div className="h-px bg-white/8" />
 
-              {/* Author */}
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-full glass-strong flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
                   {r.initials}

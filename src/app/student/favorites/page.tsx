@@ -26,7 +26,6 @@ export default function FavoritesPage() {
       try {
         const userFavorites = await getFavoritesByUser(user.uid);
         
-        // Fetch business details for each favorite
         const favoritesWithBusinesses = await Promise.all(
           userFavorites.map(async (fav) => {
             const business = await getBusinessById(fav.businessId);
@@ -34,7 +33,6 @@ export default function FavoritesPage() {
           })
         );
         
-        // Filter out any favorites where business no longer exists
         const validFavorites = favoritesWithBusinesses.filter(
           (favorite): favorite is Favorite & { business: Business } => !!favorite?.business
         );
@@ -50,7 +48,6 @@ export default function FavoritesPage() {
     fetchFavorites();
   }, [user]);
 
-  // Filter favorites based on search and category
   useEffect(() => {
     let filtered = [...favorites];
     
@@ -78,7 +75,6 @@ export default function FavoritesPage() {
     }
   };
 
-  // Get unique categories from favorites
   const categories = Array.from(new Set(favorites.map(f => f.business.category)));
 
   if (loading) {
@@ -91,15 +87,13 @@ export default function FavoritesPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div>
         <h1 className="text-3xl font-bold tracking-tight">My Favorites</h1>
         <p className="text-muted-foreground">
-          Your saved businesses for quick access
+          Saved businesses for quick access
         </p>
       </div>
 
-      {/* Search and Filters */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -132,7 +126,6 @@ export default function FavoritesPage() {
         </div>
       </div>
 
-      {/* Stats */}
       <div className="bg-muted/50 rounded-lg p-4">
         <div className="flex items-center gap-2">
           <Heart className="h-5 w-5 text-red-500 fill-red-500" />
@@ -140,7 +133,6 @@ export default function FavoritesPage() {
         </div>
       </div>
 
-      {/* Favorites Grid */}
       {filteredFavorites.length === 0 ? (
         <div className="text-center py-12 bg-muted/30 rounded-lg">
           <Heart className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
@@ -149,8 +141,8 @@ export default function FavoritesPage() {
           </h3>
           <p className="text-muted-foreground">
             {favorites.length === 0 
-              ? "Start exploring and save businesses you love!"
-              : "Try adjusting your search or filters"
+              ? "Save businesses while browsing to find them quickly."
+              : "Adjust your search or filters"
             }
           </p>
           {favorites.length === 0 && (

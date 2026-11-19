@@ -14,7 +14,6 @@ import { Category, BusinessCategory } from "@/types";
 
 const CATEGORIES_COLLECTION = "categories";
 
-// Default categories for initial setup
 export const DEFAULT_CATEGORIES: Omit<Category, "id" | "businessCount">[] = [
   {
     name: "Hostels",
@@ -28,7 +27,7 @@ export const DEFAULT_CATEGORIES: Omit<Category, "id" | "businessCount">[] = [
   {
     name: "Restaurants",
     slug: "restaurant",
-    description: "Dining places and food outlets nearby and welcoming.",
+    description: "Restaurants and food outlets near campus.",
     icon: "UtensilsCrossed",
     imageUrl: "/images/categories/restaurant.jpg",
     isActive: true,
@@ -99,9 +98,6 @@ export const DEFAULT_CATEGORIES: Omit<Category, "id" | "businessCount">[] = [
   },
 ];
 
-// ============================================
-// READ OPERATIONS
-// ============================================
 export async function getAllCategories(): Promise<Category[]> {
   const q = query(
     collection(db, CATEGORIES_COLLECTION),
@@ -112,7 +108,6 @@ export async function getAllCategories(): Promise<Category[]> {
   const snapshot = await getDocs(q);
   
   if (snapshot.empty) {
-    // Return default categories if none exist in DB
     return DEFAULT_CATEGORIES.map((cat, index) => ({
       ...cat,
       id: cat.slug,
@@ -131,7 +126,6 @@ export async function getCategoryBySlug(slug: BusinessCategory): Promise<Categor
     return { id: docSnap.id, ...docSnap.data() } as Category;
   }
 
-  // Return default if not in DB
   const defaultCat = DEFAULT_CATEGORIES.find((c) => c.slug === slug);
   if (defaultCat) {
     return { ...defaultCat, id: slug, businessCount: 0 };
@@ -140,9 +134,6 @@ export async function getCategoryBySlug(slug: BusinessCategory): Promise<Categor
   return null;
 }
 
-// ============================================
-// WRITE OPERATIONS
-// ============================================
 export async function initializeCategories(): Promise<void> {
   for (const category of DEFAULT_CATEGORIES) {
     const docRef = doc(db, CATEGORIES_COLLECTION, category.slug);
@@ -181,9 +172,6 @@ export async function toggleCategoryActive(
   await updateDoc(docRef, { isActive });
 }
 
-// ============================================
-// UTILITY FUNCTIONS
-// ============================================
 export function getCategoryIcon(slug: BusinessCategory): string {
   const category = DEFAULT_CATEGORIES.find((c) => c.slug === slug);
   return category?.icon || "MoreHorizontal";

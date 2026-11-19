@@ -45,13 +45,13 @@ function getAuthErrorMessage(error: unknown): string {
 
   switch (authError.code) {
     case "auth/popup-blocked":
-      return "Popup was blocked by your browser. Please allow popups and try again."
+      return "Your browser blocked the popup. Allow popups and try again."
     case "auth/account-exists-with-different-credential":
       return "An account already exists with this email using a different sign-in method."
     case "auth/operation-not-allowed":
       return "This sign-in method is not enabled in Firebase Authentication settings."
     default:
-      return authError.message || "Authentication failed. Please try again."
+      return authError.message || "Authentication failed. Try again."
   }
 }
 
@@ -75,7 +75,7 @@ export function ProviderSignUpForm({
     if (!email) {
       await signOut(auth)
       setErrors({
-        submit: "Unable to read email from your Google account. Please use another account.",
+        submit: "Could not read the email from your Google account. Try another account.",
       })
       return
     }
@@ -88,7 +88,7 @@ export function ProviderSignUpForm({
     if (existingRole && existingRole !== "provider") {
       await signOut(auth)
       setErrors({
-        submit: "This Google account is already registered as a different account type. Please use the correct sign-in page.",
+        submit: "This Google account is registered under another account type. Use the matching sign-in page.",
       })
       return
     }
@@ -198,7 +198,6 @@ export function ProviderSignUpForm({
         role: "provider",
       })
 
-      // Set auth cookies for middleware
       const token = await userCredential.user.getIdToken()
       Cookies.set("auth-token", token, { expires: 7 })
       Cookies.set("user-role", "provider", { expires: 7 })
@@ -262,7 +261,6 @@ export function ProviderSignUpForm({
         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.07] to-transparent pointer-events-none rounded-2xl" />
         <form onSubmit={handleSignUp} noValidate className="relative z-10 flex flex-col gap-5">
 
-          {/* Header */}
           <div className="space-y-1 mb-1">
             <h1 className="text-2xl font-bold text-white">Create provider account</h1>
             <p className="text-sm text-white/45">
@@ -271,9 +269,7 @@ export function ProviderSignUpForm({
             </p>
           </div>
 
-          {/* Fields */}
           <FieldGroup className="gap-4">
-            {/* Name row */}
             <div className="grid grid-cols-2 gap-3">
               <Field>
                 <FieldLabel htmlFor="first-name">First Name</FieldLabel>
@@ -317,7 +313,6 @@ export function ProviderSignUpForm({
               {errors.email && <FieldError>{errors.email}</FieldError>}
             </Field>
 
-            {/* NIC + Phone row */}
             <div className="grid grid-cols-2 gap-3">
               <Field>
                 <FieldLabel htmlFor="nic">NIC</FieldLabel>
@@ -426,17 +421,15 @@ export function ProviderSignUpForm({
           )}
 
           <Button type="submit" disabled={loading} className="h-11 text-sm font-semibold">
-            {loading ? "Creating account…" : "Create provider account"}
+            {loading ? "Creating account..." : "Create provider account"}
           </Button>
 
-          {/* Divider */}
           <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-white/10" />
             <span className="text-xs text-white/30">or sign up with</span>
             <div className="flex-1 h-px bg-white/10" />
           </div>
 
-          {/* Social buttons */}
           <div className="flex flex-col gap-2.5">
             <button
               type="button"

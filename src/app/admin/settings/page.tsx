@@ -134,14 +134,14 @@ export default function AdminSettingsPage() {
 
       await refreshUserData();
 
-      setMessage({ type: "success", text: "Profile updated successfully!" });
+      setMessage({ type: "success", text: "Profile updated." });
     } catch (error: unknown) {
       console.error("Error saving profile:", error);
       if ((error as { code?: string })?.code === "auth/requires-recent-login") {
-        setMessage({ type: "error", text: "Please sign in again before changing your email." });
+        setMessage({ type: "error", text: "Sign in again before changing your email." });
         return;
       }
-      setMessage({ type: "error", text: "Failed to save profile. Please try again." });
+      setMessage({ type: "error", text: "Could not save profile. Try again." });
     } finally {
       setSaving(false);
     }
@@ -152,7 +152,7 @@ export default function AdminSettingsPage() {
     if (!file || !user) return;
 
     if (!file.type.startsWith("image/")) {
-      setMessage({ type: "error", text: "Please select an image file." });
+      setMessage({ type: "error", text: "Select an image file." });
       return;
     }
 
@@ -170,7 +170,7 @@ export default function AdminSettingsPage() {
       setMessage({ type: "success", text: "Profile picture uploaded. Click Save Changes to apply." });
     } catch (error) {
       console.error("Error uploading profile image:", error);
-      setMessage({ type: "error", text: "Failed to upload profile image. Please try again." });
+      setMessage({ type: "error", text: "Could not upload profile image. Try again." });
     } finally {
       setUploadingImage(false);
       event.target.value = "";
@@ -202,13 +202,13 @@ export default function AdminSettingsPage() {
       await updatePassword(auth.currentUser, passwordData.newPassword);
       
       setPasswordData({ currentPassword: "", newPassword: "", confirmPassword: "" });
-      setMessage({ type: "success", text: "Password changed successfully!" });
+      setMessage({ type: "success", text: "Password changed." });
     } catch (error: unknown) {
       console.error("Error changing password:", error);
       if ((error as { code?: string }).code === "auth/wrong-password") {
         setMessage({ type: "error", text: "Current password is incorrect." });
       } else {
-        setMessage({ type: "error", text: "Failed to change password. Please try again." });
+        setMessage({ type: "error", text: "Could not change password. Try again." });
       }
     } finally {
       setChangingPassword(false);
@@ -224,10 +224,10 @@ export default function AdminSettingsPage() {
     try {
       await saveAdminNotifications(user.uid, notifications);
       
-      setMessage({ type: "success", text: "Notification preferences saved!" });
+      setMessage({ type: "success", text: "Notification preferences saved." });
     } catch (error) {
       console.error("Error saving notifications:", error);
-      setMessage({ type: "error", text: "Failed to save preferences. Please try again." });
+      setMessage({ type: "error", text: "Could not save preferences. Try again." });
     } finally {
       setSaving(false);
     }
@@ -240,10 +240,10 @@ export default function AdminSettingsPage() {
     try {
       await savePlatformSettings(platformSettings, user?.uid || "");
       
-      setMessage({ type: "success", text: "Platform settings saved!" });
+      setMessage({ type: "success", text: "Platform settings saved." });
     } catch (error) {
       console.error("Error saving platform settings:", error);
-      setMessage({ type: "error", text: "Failed to save settings. Please try again." });
+      setMessage({ type: "error", text: "Could not save settings. Try again." });
     } finally {
       setSaving(false);
     }
@@ -259,7 +259,6 @@ export default function AdminSettingsPage() {
 
   return (
     <div className="space-y-6 max-w-2xl">
-      {/* Header */}
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Admin Settings</h1>
         <p className="text-muted-foreground">
@@ -267,7 +266,6 @@ export default function AdminSettingsPage() {
         </p>
       </div>
 
-      {/* Message */}
       {message && (
         <div className={`flex items-center gap-2 p-4 rounded-lg ${
           message.type === "success" 
@@ -283,7 +281,6 @@ export default function AdminSettingsPage() {
         </div>
       )}
 
-      {/* Profile Section */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -363,7 +360,6 @@ export default function AdminSettingsPage() {
         </CardContent>
       </Card>
 
-      {/* Platform Settings Section */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -469,7 +465,6 @@ export default function AdminSettingsPage() {
         </CardContent>
       </Card>
 
-      {/* Password Section */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -525,7 +520,6 @@ export default function AdminSettingsPage() {
         </CardContent>
       </Card>
 
-      {/* Notifications Section */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">

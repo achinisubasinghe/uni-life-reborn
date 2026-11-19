@@ -8,8 +8,8 @@ import type { ChatMessage } from "@/app/api/chat/route";
 
 const SUGGESTIONS = [
   "Find a hostel near NSBM",
-  "Cheap restaurants near University of Colombo",
-  "24-hour pharmacy near Kelaniya campus",
+  "Affordable restaurants near University of Colombo",
+  "24-hour pharmacy near University of Sri Jayewardenepura",
   "What services does UniLife offer?",
   "How do I create a student account?",
 ];
@@ -23,7 +23,6 @@ function MessageBubble({ msg, isLatest }: { msg: ChatMessage; isLatest: boolean 
       transition={{ duration: 0.3 }}
       className={`flex items-end gap-2.5 ${isUser ? "flex-row-reverse" : "flex-row"}`}
     >
-      {/* Avatar */}
       <div
         className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center ${
           isUser ? "glass-strong" : "bg-amber-500/20 border border-amber-400/20"
@@ -32,7 +31,6 @@ function MessageBubble({ msg, isLatest }: { msg: ChatMessage; isLatest: boolean 
         {isUser ? <User className="w-3.5 h-3.5 text-white/70" /> : <Bot className="w-3.5 h-3.5 text-amber-300" />}
       </div>
 
-      {/* Bubble */}
       <div
         className={`max-w-[78%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
           isUser
@@ -101,13 +99,13 @@ export default function ChatPage() {
       } else {
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", content: "Sorry, I ran into an error. Please try again." },
+          { role: "assistant", content: "Something went wrong. Try again." },
         ]);
       }
     } catch {
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Network error. Please check your connection and try again." },
+        { role: "assistant", content: "Network error. Check your connection and try again." },
       ]);
     } finally {
       setLoading(false);
@@ -124,7 +122,6 @@ export default function ChatPage() {
 
   return (
     <main className="site-bg min-h-screen flex flex-col">
-      {/* Header */}
       <div className="glass border-b border-white/[0.06] sticky top-0 z-10">
         <div className="max-w-3xl mx-auto px-4 py-4 flex items-center gap-3">
           <Link
@@ -142,15 +139,13 @@ export default function ChatPage() {
                 <span className="text-white font-semibold text-sm">UniBot</span>
                 <Sparkles className="w-3 h-3 text-amber-300" />
               </div>
-              <span className="text-white/40 text-xs">AI campus guide · Powered by Groq</span>
+              <span className="text-white/40 text-xs">Campus assistant powered by Groq</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Messages area */}
       <div className="flex-1 max-w-3xl w-full mx-auto px-4 py-6 flex flex-col gap-5 overflow-y-auto">
-        {/* Welcome state */}
         {messages.length === 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -160,12 +155,11 @@ export default function ChatPage() {
             <div className="w-16 h-16 rounded-2xl bg-amber-500/15 border border-amber-400/20 flex items-center justify-center mb-5">
               <Bot className="w-8 h-8 text-amber-300" />
             </div>
-            <h2 className="text-white text-xl font-semibold mb-2">Hi, I&apos;m UniBot</h2>
+            <h2 className="text-white text-xl font-semibold mb-2">UniBot</h2>
             <p className="text-white/45 text-sm max-w-xs leading-relaxed mb-8">
-              Your AI campus guide. Ask me anything about student services, accommodation, or daily life near university.
+              Ask about student services, accommodation, or daily life near campus.
             </p>
 
-            {/* Suggested questions */}
             <div className="flex flex-col gap-2 w-full max-w-sm">
               {SUGGESTIONS.map((s) => (
                 <button
@@ -180,7 +174,6 @@ export default function ChatPage() {
           </motion.div>
         )}
 
-        {/* Message list */}
         <AnimatePresence>
           {messages.map((msg, i) => (
             <MessageBubble key={i} msg={msg} isLatest={i === messages.length - 1 && msg.role === "assistant"} />
@@ -191,7 +184,6 @@ export default function ChatPage() {
         <div ref={bottomRef} />
       </div>
 
-      {/* Input bar */}
       <div className="glass border-t border-white/[0.06] sticky bottom-0">
         <div className="max-w-3xl mx-auto px-4 py-4">
           <div className="glass-strong rounded-2xl flex items-end gap-3 px-4 py-3">
@@ -200,7 +192,7 @@ export default function ChatPage() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask about hostels, restaurants, pharmacies…"
+              placeholder="Ask about hostels, restaurants, pharmacies..."
               rows={1}
               className="flex-1 bg-transparent text-white text-sm placeholder-white/25 resize-none outline-none leading-relaxed max-h-32 py-0.5"
               style={{ minHeight: "1.5rem" }}
@@ -215,7 +207,7 @@ export default function ChatPage() {
             </button>
           </div>
           <p className="text-white/20 text-xs text-center mt-2">
-            UniBot can make mistakes. Verify important information independently.
+            UniBot can make mistakes. Verify important details on your own.
           </p>
         </div>
       </div>

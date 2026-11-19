@@ -23,7 +23,7 @@ declare global {
   }
 }
 
-const DEFAULT_CENTER = { lat: 6.9271, lng: 79.8612 }; // Colombo
+const DEFAULT_CENTER = { lat: 6.9271, lng: 79.8612 };
 let googleMapsScriptPromise: Promise<void> | null = null;
 
 function loadGoogleMapsScript(apiKey: string): Promise<void> {
@@ -179,7 +179,7 @@ export function GoogleMapPicker({
       } catch (err) {
         console.error(err);
         if (isMounted) {
-          setError("Unable to load Google Maps. Please try again later.");
+          setError("Could not load Google Maps. Try again later.");
           setLoading(false);
         }
       }
@@ -194,12 +194,12 @@ export function GoogleMapPicker({
 
   const handleUseCurrentLocation = () => {
     if (typeof window !== "undefined" && !window.isSecureContext) {
-      setError("Current location requires a secure context (HTTPS or localhost).");
+      setError("Current location requires HTTPS or localhost.");
       return;
     }
 
     if (!navigator.geolocation) {
-      setError("Geolocation is not supported by your browser.");
+      setError("Your browser does not support geolocation.");
       return;
     }
 
@@ -239,16 +239,16 @@ export function GoogleMapPicker({
       (geoError) => {
         switch (geoError.code) {
           case 1:
-            setError("Location permission was denied. Please allow location access in your browser.");
+            setError("Location permission denied. Allow location access in your browser.");
             break;
           case 2:
-            setError("Your location is currently unavailable. Try again in a few seconds.");
+            setError("Location is unavailable right now. Try again in a few seconds.");
             break;
           case 3:
-            setError("Location request timed out. Please try again.");
+            setError("Location request timed out. Try again.");
             break;
           default:
-            setError("Unable to fetch your current location.");
+            setError("Could not read your current location.");
         }
       },
       {

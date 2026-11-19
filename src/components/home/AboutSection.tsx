@@ -9,28 +9,28 @@ const features = [
     icon: Shield,
     title: "Verified listings",
     description:
-      "Every business is manually reviewed by our team so you always get accurate, trustworthy information.",
+      "Every business is reviewed manually before appearing in the directory so details stay accurate.",
     accent: "text-amber-300",
   },
   {
     icon: Clock,
-    title: "Always up-to-date",
+    title: "Up-to-date details",
     description:
-      "Real-time prices, opening hours, and availability — no more showing up to a closed shop.",
+      "Listed prices, opening hours, and availability help you avoid turning up to a closed shop.",
     accent: "text-teal-300",
   },
   {
     icon: MapPin,
-    title: "Campus-centric search",
+    title: "Campus-centered search",
     description:
-      "Results are ranked by proximity to your university, saving you time and travel costs.",
+      "Results rank by distance from your university to save travel time and cost.",
     accent: "text-amber-300",
   },
   {
     icon: CheckCircle,
-    title: "Student-first design",
+    title: "Built for students",
     description:
-      "Built entirely around student needs — free to use, no ads, no hidden charges.",
+      "Free to use with no ads and no hidden charges.",
     accent: "text-orange-300",
   },
 ];
@@ -40,12 +40,10 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="relative py-28 px-6 overflow-hidden">
-      {/* orb */}
       <div className="orb w-[500px] h-[500px] bg-teal-700 top-1/2 left-[-10%]" style={{ opacity: 0.09 }} />
 
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left — text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -57,17 +55,16 @@ export default function AboutSection() {
               Built for the student journey
             </h2>
             <p className="text-white/55 text-lg mb-6 leading-relaxed">
-              Every year, thousands of students arrive at Sri Lankan universities and face the
-              same problem: where do I find safe, affordable housing? Where can I eat on a budget?
-              Where&apos;s the nearest pharmacy? There was no reliable answer &mdash; until now.
+              Every year, new students arrive at Sri Lankan universities with the same questions.
+              Where can I find safe housing, affordable meals, and the nearest pharmacy? Most
+              students rely on scattered word of mouth.
             </p>
             <p className="text-white/45 text-base leading-relaxed">
-              UniLife is a verified, student-first platform serving NSBM Green University,
-              University of Colombo, and University of Sri Jayewardenepura. Businesses are
-              manually reviewed before listing. Everything is free, and always will be.
+              UniLife lists verified local services for NSBM Green University, University of Colombo,
+              and University of Sri Jayewardenepura. Reviewers check every business before it goes
+              live, and the platform is free for students.
             </p>
 
-            {/* Mini stats */}
             <div className="mt-10 grid grid-cols-3 gap-4">
               {[
                 { v: stats.verifiedBusinesses.toLocaleString(), l: "Verified businesses" },
@@ -82,7 +79,6 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Right — feature cards */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}

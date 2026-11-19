@@ -3,17 +3,17 @@ import Groq from "groq-sdk";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-const SYSTEM_PROMPT = `You are UniBot, a friendly and knowledgeable AI assistant built for university students in Sri Lanka. Your purpose is to help students discover and navigate essential services near their campus.
+const SYSTEM_PROMPT = `You are UniBot, a campus assistant for university students in Sri Lanka. You help students find and use essential services near campus.
 
-You assist with:
+You help with:
 - Finding nearby hostels, restaurants, supermarkets, pharmacies, salons, and other services
 - Answering questions about university life in Sri Lanka
-- Providing tips about budgeting, accommodation, and daily student needs
-- Helping students understand how to use the UniLife platform
+- Sharing practical tips on budgeting, accommodation, and daily student needs
+- Explaining how to use the UniLife platform
 
-Universities currently served: NSBM Green University, University of Colombo, University of Sri Jayewardenepura.
+Universities currently served: NSBM Green University, University of Colombo, and University of Sri Jayewardenepura.
 
-Keep your replies concise, warm, and helpful. Use simple language. If you don't know something specific (like real-time prices), acknowledge that and guide the student to check the platform listings.`;
+Keep answers direct, brief, and clear. Use plain language without filler phrases, em dashes, or parentheses. If you do not know real-time details such as current prices, state that clearly and direct the student to check the platform listings.`;
 
 export interface ChatMessage {
   role: "user" | "assistant";
@@ -38,12 +38,12 @@ export async function POST(req: NextRequest) {
       temperature: 0.7,
     });
 
-    const reply = completion.choices[0]?.message?.content ?? "Sorry, I could not generate a response.";
+    const reply = completion.choices[0]?.message?.content ?? "Could not generate a response.";
     return NextResponse.json({ message: reply });
   } catch (error) {
     console.error("Groq API error:", error);
     return NextResponse.json(
-      { error: "Failed to get a response. Please try again." },
+      { error: "Failed to get a response. Try again." },
       { status: 500 }
     );
   }

@@ -150,11 +150,9 @@ export default function BusinessDetailsPage() {
         effectiveRole
       );
       
-      // Reload reviews
       const updatedReviews = await getReviewsForBusiness(businessId);
       setReviews(updatedReviews);
       
-      // Reload business for updated rating
       const updatedBusiness = await getBusinessById(businessId);
       setBusiness(updatedBusiness);
       
@@ -361,7 +359,6 @@ export default function BusinessDetailsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <div className="border-b bg-background/95 backdrop-blur sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href={backToBrowseHref} className="flex items-center gap-2 text-muted-foreground hover:text-foreground">
@@ -381,9 +378,7 @@ export default function BusinessDetailsPage() {
 
       <div className="container mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Image Gallery */}
             {business.images.length > 0 && (
               <div className="space-y-4">
                 <div className="aspect-video rounded-xl overflow-hidden">
@@ -451,7 +446,6 @@ export default function BusinessDetailsPage() {
               </div>
             )}
 
-            {/* Business Info */}
             <div>
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -479,7 +473,6 @@ export default function BusinessDetailsPage() {
               </p>
             </div>
 
-            {/* Amenities */}
             {business.amenities && business.amenities.length > 0 && (
               <div>
                 <h2 className="text-lg font-semibold mb-3">Amenities</h2>
@@ -496,7 +489,6 @@ export default function BusinessDetailsPage() {
               </div>
             )}
 
-            {/* Reviews Section */}
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold">
@@ -514,11 +506,10 @@ export default function BusinessDetailsPage() {
 
               {!user?.uid && (
                 <p className="text-sm text-muted-foreground mb-4">
-                  Please sign in as a student to write a review.
+                  Sign in as a student to write a review.
                 </p>
               )}
 
-              {/* Review Form */}
               {showReviewForm && (
                 <Card className="mb-6">
                   <CardHeader>
@@ -547,7 +538,7 @@ export default function BusinessDetailsPage() {
                         </label>
                         <textarea
                           className="w-full h-32 p-3 border rounded-md resize-none"
-                          placeholder="Share your experience..."
+                          placeholder="Write your review..."
                           value={reviewData.comment}
                           onChange={(e) =>
                             setReviewData((prev) => ({
@@ -575,7 +566,6 @@ export default function BusinessDetailsPage() {
                 </Card>
               )}
 
-              {/* Reviews List */}
               {reviews.length > 0 ? (
                 <div className="space-y-4">
                   {reviews.map((review) => (
@@ -614,7 +604,6 @@ export default function BusinessDetailsPage() {
               )}
             </div>
 
-            {/* Provider Posts */}
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold">Latest Updates</h2>
@@ -702,9 +691,7 @@ export default function BusinessDetailsPage() {
             </div>
           </div>
 
-          {/* Sidebar */}
           <div className="space-y-6">
-            {/* Contact Card */}
             <Card>
               <CardHeader>
                 <CardTitle>Contact Information</CardTitle>
@@ -766,7 +753,6 @@ export default function BusinessDetailsPage() {
               </CardContent>
             </Card>
 
-            {/* Business Hours */}
             {business.hours && (
               <Card>
                 <CardHeader>

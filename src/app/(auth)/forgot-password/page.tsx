@@ -30,11 +30,11 @@ function getResetErrorMessage(error: unknown): string {
 
   switch (authError.code) {
     case "auth/invalid-email":
-      return "Please enter a valid email address.";
+      return "Enter a valid email address.";
     case "auth/too-many-requests":
-      return "Too many requests. Please wait a bit and try again.";
+      return "Too many requests. Wait before trying again.";
     default:
-      return authError.message || "Failed to send reset email. Please try again.";
+      return authError.message || "Could not send reset email. Try again.";
   }
 }
 
@@ -170,7 +170,7 @@ export default function ForgotPasswordPage() {
 
       if (now < currentAttemptState.cooldownUntil) {
         const waitSeconds = getSecondsRemaining(currentAttemptState.cooldownUntil);
-        setError(`Please wait ${waitSeconds}s before sending another reset email.`);
+        setError(`Wait ${waitSeconds}s before requesting another reset email.`);
         startCooldownTimer(currentAttemptState.cooldownUntil);
         return;
       }
@@ -181,7 +181,7 @@ export default function ForgotPasswordPage() {
           timestamps: recentTimestamps,
           cooldownUntil: lockoutUntil,
         });
-        setError("Too many reset requests. Please wait 5 minutes before trying again.");
+        setError("Too many reset requests. Wait 5 minutes before trying again.");
         startCooldownTimer(lockoutUntil);
         return;
       }
@@ -198,7 +198,7 @@ export default function ForgotPasswordPage() {
         timestamps: [...recentTimestamps, now],
         cooldownUntil,
       });
-      setSuccess("Password reset link sent. Please check your email inbox.");
+      setSuccess("Password reset link sent. Check your email inbox.");
       startCooldownTimer(cooldownUntil);
     } catch (err: unknown) {
       setError(getResetErrorMessage(err));

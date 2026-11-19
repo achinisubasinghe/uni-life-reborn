@@ -29,21 +29,21 @@ function getAuthErrorMessage(error: unknown): string {
 
   switch (authError.code) {
     case "auth/invalid-email":
-      return "Please enter a valid email address.";
+      return "Enter a valid email address.";
     case "auth/user-not-found":
     case "auth/wrong-password":
     case "auth/invalid-credential":
       return "Invalid email or password.";
     case "auth/too-many-requests":
-      return "Too many attempts. Please wait a moment and try again.";
+      return "Too many attempts. Wait before trying again.";
     case "auth/popup-blocked":
-      return "Popup was blocked by your browser. Please allow popups and try again.";
+      return "Your browser blocked the popup. Allow popups and try again.";
     case "auth/account-exists-with-different-credential":
       return "An account already exists with this email using a different sign-in method.";
     case "auth/operation-not-allowed":
       return "This sign-in method is not enabled in Firebase Authentication settings.";
     default:
-      return authError.message || "Authentication failed. Please try again.";
+      return authError.message || "Authentication failed. Try again.";
   }
 }
 
@@ -63,7 +63,7 @@ export function LoginForm({
     const email = firebaseUser.email?.trim().toLowerCase()
 
     if (!email) {
-      setError("Unable to read email from your Google account. Please use another account.")
+      setError("Could not read the email from your Google account. Try another account.")
       return
     }
 
@@ -73,7 +73,7 @@ export function LoginForm({
     });
 
     if (!role) {
-      setInfo("No account found for this Google email. Please choose Student or Provider to continue.")
+      setInfo("No account found for this Google email. Choose Student or Provider to sign up.")
       router.push("/signup");
       return;
     }
@@ -115,30 +115,27 @@ export function LoginForm({
         password
       );
 
-      // Get user role and redirect accordingly
       const role = await resolveUserRole({
         uid: userCredential.user.uid,
         email: userCredential.user.email,
       });
 
       if (!role) {
-        setError("User account not found. Please sign up first.");
+        setError("Account not found. Sign up first.");
         return;
       }
 
-      // Set cookies for middleware
       const token = await userCredential.user.getIdToken();
       Cookies.set("auth-token", token, { expires: 7 });
       Cookies.set("user-role", role, { expires: 7 });
 
-      // Redirect based on role
       const dashboardUrl = getDashboardUrl(role);
       router.push(dashboardUrl);
 
     } catch (error: unknown) {
       const authError = error as FirebaseAuthError;
       console.error(authError.message);
-      setError(authError.message || "Login failed. Please try again.");
+      setError(authError.message || "Sign-in failed. Try again.");
     } finally {
       setLoading(false);
     }
@@ -194,9 +191,8 @@ export function LoginForm({
         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.07] to-transparent pointer-events-none rounded-2xl" />
 
         <form onSubmit={handleLogin} className="relative z-10 flex flex-col gap-5">
-          {/* Header */}
           <div className="space-y-1 mb-1">
-            <h1 className="text-2xl font-bold text-white">Welcome back</h1>
+            <h1 className="text-2xl font-bold text-white">Sign in</h1>
             <p className="text-sm text-white/45">
               Don&apos;t have an account?{" "}
               <Link href="/signup" className="text-amber-300 hover:text-amber-200 transition-colors font-medium">Sign up</Link>
@@ -218,14 +214,12 @@ export function LoginForm({
             </button>
           </div>
 
-          {/* Divider */}
           <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-white/10" />
             <span className="text-xs text-white/30">or continue with email</span>
             <div className="flex-1 h-px bg-white/10" />
           </div>
 
-          {/* Email & password */}
           <FieldGroup className="gap-4">
             <Field>
               <FieldLabel htmlFor="email">Email</FieldLabel>
@@ -269,7 +263,7 @@ export function LoginForm({
           )}
 
           <Button type="submit" disabled={loading} className="h-11 text-sm font-semibold mt-1">
-            {loading ? "Signing in…" : "Sign in"}
+            {loading ? "Signing in..." : "Sign in"}
           </Button>
         </form>
       </div>

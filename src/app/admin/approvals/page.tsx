@@ -177,7 +177,6 @@ export default function AdminApprovalsPage() {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
-        {/* Pending List */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold">Businesses ({filteredBusinesses.length})</h2>
@@ -200,9 +199,9 @@ export default function AdminApprovalsPage() {
             <Card>
               <CardContent className="py-12 text-center">
                 <CheckCircle className="h-12 w-12 mx-auto text-green-500 mb-3" />
-                <p className="text-lg font-medium">All caught up!</p>
+                <p className="text-lg font-medium">No pending approvals</p>
                 <p className="text-muted-foreground">
-                  No businesses found for this filter.
+                  No businesses match this filter.
                 </p>
               </CardContent>
             </Card>
@@ -253,7 +252,6 @@ export default function AdminApprovalsPage() {
           )}
         </div>
 
-        {/* Detail View */}
         <div>
           {selectedBusiness ? (
             <Card>
@@ -276,7 +274,6 @@ export default function AdminApprovalsPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* Images */}
                 {selectedBusiness.images.length > 0 && (
                   <div className="grid grid-cols-2 gap-2">
                     {selectedBusiness.images.slice(0, 4).map((img, i) => (
@@ -290,7 +287,6 @@ export default function AdminApprovalsPage() {
                   </div>
                 )}
 
-                {/* Details */}
                 <div className="space-y-3">
                   <div>
                     <p className="text-sm font-medium text-muted-foreground">
@@ -336,7 +332,6 @@ export default function AdminApprovalsPage() {
                   </div>
                 </div>
 
-                {/* Actions */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-4 border-t">
                   {selectedBusiness.status === "pending" && !selectedBusiness.isBlocked && (
                     <>
@@ -404,7 +399,6 @@ export default function AdminApprovalsPage() {
         </div>
       </div>
 
-      {/* Reject Modal */}
       {showRejectModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <Card className="w-full max-w-md mx-4">

@@ -14,7 +14,6 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 pt-28 pb-20"
     >
-      {/* Background photo */}
       <Image
         src="/images/hero-bg.jpeg"
         alt=""
@@ -24,7 +23,6 @@ export default function HeroSection() {
         style={{ zIndex: 0 }}
       />
 
-      {/* Primary dark vignette — keeps text readable */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -34,7 +32,6 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Subtle warm-amber radial bloom at top */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -44,9 +41,7 @@ export default function HeroSection() {
         }}
       />
 
-      {/* All content above overlays */}
       <div className="relative flex flex-col items-center w-full" style={{ zIndex: 3 }}>
-        {/* Pill badge */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -55,7 +50,6 @@ export default function HeroSection() {
         >
         </motion.div>
 
-        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -66,19 +60,17 @@ export default function HeroSection() {
           <span className="gradient-text">near campus</span>
         </motion.h1>
 
-        {/* Sub-headline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-6 text-center text-lg md:text-xl text-white/60 max-w-2xl leading-relaxed"
         >
-          First-year university students in Sri Lanka arrive on campus with no idea where to find
-          safe housing, affordable food, or essential services. UniLife fixes that — a verified
-          directory, AI-powered search, and a growing community, all for free.
+          New university students in Sri Lanka often struggle to find safe housing, affordable food,
+          and daily services near campus. UniLife brings verified local listings, campus search,
+          and student reviews together for free.
         </motion.p>
 
-        {/* CTA buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,7 +81,7 @@ export default function HeroSection() {
             href="/signup"
             className="group inline-flex items-center gap-2 bg-amber-500 text-black font-semibold px-7 py-3.5 rounded-full hover:bg-amber-400 transition-all duration-300 hover:scale-105 shadow-[0_0_40px_rgba(217,119,6,0.45)]"
           >
-            Get started free
+            Get started
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
           <Link
@@ -101,7 +93,6 @@ export default function HeroSection() {
           </Link>
         </motion.div>
 
-        {/* Stats row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -112,7 +103,7 @@ export default function HeroSection() {
             { value: stats.verifiedBusinesses.toLocaleString(), label: "Verified businesses" },
             { value: "3", label: "Universities covered" },
             { value: stats.activeStudents.toLocaleString(), label: "Active students" },
-            { value: "24/7", label: "AI support" },
+            { value: "24/7", label: "UniBot chat" },
           ].map((stat) => (
             <div key={stat.label} className="glass glass-sheen rounded-2xl px-6 py-4 text-center min-w-[110px]">
               <div className="text-2xl font-bold text-white">{stat.value}</div>
@@ -122,7 +113,6 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

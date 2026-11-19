@@ -126,7 +126,6 @@ export default function NewBusinessPage() {
 
     setImages((prev) => [...prev, ...validFiles]);
     
-    // Generate previews
     validFiles.forEach((file) => {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -150,7 +149,7 @@ export default function NewBusinessPage() {
     if (!formData.city.trim()) newErrors.city = "City is required";
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
     if (!formData.latitude || !formData.longitude) {
-      newErrors.location = "Please select your business location on the map";
+      newErrors.location = "Select your business location on the map";
     }
     if (images.length === 0) newErrors.images = "At least one image is required";
 
@@ -177,7 +176,6 @@ export default function NewBusinessPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex items-center gap-4">
         <Link href="/provider/businesses">
           <Button variant="ghost" size="icon">
@@ -193,7 +191,6 @@ export default function NewBusinessPage() {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Basic Info */}
         <Card>
           <CardHeader>
             <CardTitle>Basic Information</CardTitle>
@@ -261,7 +258,6 @@ export default function NewBusinessPage() {
           </CardContent>
         </Card>
 
-        {/* Images */}
         <Card>
           <CardHeader>
             <CardTitle>Images</CardTitle>
@@ -308,7 +304,6 @@ export default function NewBusinessPage() {
           </CardContent>
         </Card>
 
-        {/* Location & Contact */}
         <Card>
           <CardHeader>
             <CardTitle>Location & Contact</CardTitle>
@@ -352,7 +347,7 @@ export default function NewBusinessPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <Field>
-                <FieldLabel htmlFor="email">Email (Optional)</FieldLabel>
+                <FieldLabel htmlFor="email">Email</FieldLabel>
                 <Input
                   id="email"
                   type="email"
@@ -363,7 +358,7 @@ export default function NewBusinessPage() {
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="website">Website (Optional)</FieldLabel>
+                <FieldLabel htmlFor="website">Website</FieldLabel>
                 <Input
                   id="website"
                   type="url"
@@ -420,7 +415,6 @@ export default function NewBusinessPage() {
           </CardContent>
         </Card>
 
-        {/* Amenities */}
         <Card>
           <CardHeader>
             <CardTitle>Amenities</CardTitle>
@@ -442,7 +436,6 @@ export default function NewBusinessPage() {
           </CardContent>
         </Card>
 
-        {/* Business Hours */}
         <Card>
           <CardHeader>
             <CardTitle>Business Hours</CardTitle>
@@ -484,7 +477,6 @@ export default function NewBusinessPage() {
           </CardContent>
         </Card>
 
-        {/* Submit */}
         {errors.submit && (
           <div className="p-4 bg-destructive/10 text-destructive rounded-lg">
             {errors.submit}

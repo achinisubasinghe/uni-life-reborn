@@ -114,7 +114,6 @@ function StudentBrowseContent() {
     return result;
   }, [searchQuery, selectedCategory, minRating, priceRange]);
 
-  // Load businesses
   const loadBusinesses = useCallback(async () => {
     setLoading(true);
     try {
@@ -138,7 +137,6 @@ function StudentBrowseContent() {
 
       let results = applyClientFilters(baseResults);
 
-      // Apply sorting
       if (sortBy === "rating") {
         results = results.sort((a, b) => b.averageRating - a.averageRating);
       } else if (sortBy === "price") {
@@ -159,7 +157,6 @@ function StudentBrowseContent() {
     }
   }, [nearbyOnly, userLocation, radiusKm, selectedCategory, applyClientFilters, sortBy]);
 
-  // Load favorites
   useEffect(() => {
     const loadFavorites = async () => {
       if (!user) return;
@@ -249,16 +246,16 @@ function StudentBrowseContent() {
       (error) => {
         switch (error.code) {
           case error.PERMISSION_DENIED:
-            setLocationError("Location permission denied. Please allow location access and try again.");
+            setLocationError("Location permission denied. Allow location access in your browser and try again.");
             break;
           case error.POSITION_UNAVAILABLE:
-            setLocationError("Your location is currently unavailable. Try again in a few seconds.");
+            setLocationError("Location is unavailable right now. Try again in a few seconds.");
             break;
           case error.TIMEOUT:
-            setLocationError("Location request timed out. Please try again.");
+            setLocationError("Location request timed out. Try again.");
             break;
           default:
-            setLocationError("Unable to access your location. Please allow location access.");
+            setLocationError("Could not access your location. Allow location access in your browser.");
         }
       },
       {
@@ -271,7 +268,6 @@ function StudentBrowseContent() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="glass glass-sheen rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold">Browse Services</h1>
@@ -299,7 +295,6 @@ function StudentBrowseContent() {
         </div>
       </div>
 
-      {/* Search Bar */}
       <SearchBar
         onSearch={handleSearch}
         placeholder="Search for services, restaurants, hostels..."
@@ -338,9 +333,7 @@ function StudentBrowseContent() {
       {locationError && <p className="text-sm text-destructive">{locationError}</p>}
 
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* Sidebar Filters */}
         <aside className={`lg:w-64 shrink-0 space-y-6 ${showFilters ? "block" : "hidden lg:block"}`}>
-          {/* Categories */}
           <Card className="glass glass-sheen border-white/15">
             <CardContent className="p-4">
               <h3 className="font-semibold mb-3 flex items-center gap-2">
@@ -372,7 +365,6 @@ function StudentBrowseContent() {
             </CardContent>
           </Card>
 
-          {/* Price Range */}
           {selectedCategory === "hostel" && (
             <Card className="glass glass-sheen border-white/15">
               <CardContent className="p-4">
@@ -399,7 +391,6 @@ function StudentBrowseContent() {
             </Card>
           )}
 
-          {/* Rating Filter */}
           <Card className="glass glass-sheen border-white/15">
             <CardContent className="p-4">
               <h3 className="font-semibold mb-3 flex items-center gap-2">
@@ -424,7 +415,6 @@ function StudentBrowseContent() {
             </CardContent>
           </Card>
 
-          {/* Clear Filters */}
           {hasActiveFilters && (
             <Button variant="outline" onClick={clearFilters} className="w-full">
               <X className="h-4 w-4 mr-2" />
@@ -433,9 +423,7 @@ function StudentBrowseContent() {
           )}
         </aside>
 
-        {/* Results */}
         <div className="flex-1">
-          {/* Results Header */}
           <div className="flex items-center justify-between mb-4">
             <p className="text-muted-foreground">
               {loading ? "Loading..." : `${businesses.length} services found`}
@@ -451,7 +439,6 @@ function StudentBrowseContent() {
             </select>
           </div>
 
-          {/* Active Filters Tags */}
           {hasActiveFilters && (
             <div className="flex flex-wrap gap-2 mb-4">
               {searchQuery && (
@@ -489,7 +476,6 @@ function StudentBrowseContent() {
             </div>
           )}
 
-          {/* Loading State */}
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <Loader2 className="h-8 w-8 animate-spin text-primary" />

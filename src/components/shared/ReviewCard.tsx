@@ -65,7 +65,6 @@ export function ReviewCard({
   return (
     <Card className={cn("", className)}>
       <CardContent className="p-4">
-        {/* Header */}
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -89,7 +88,6 @@ export function ReviewCard({
             </div>
           </div>
 
-          {/* Actions */}
           <div className="flex items-center gap-1">
             {isProvider && onRespond && !review.providerResponse && (
               <Button
@@ -114,10 +112,8 @@ export function ReviewCard({
           </div>
         </div>
 
-        {/* Review Content */}
         <p className="mt-3 text-sm leading-relaxed">{review.comment}</p>
 
-        {/* Review Images */}
         {review.images && review.images.length > 0 && (
           <div className="mt-3 flex gap-2 overflow-x-auto">
             {review.images.map((image, index) => (
@@ -131,7 +127,6 @@ export function ReviewCard({
           </div>
         )}
 
-        {/* Provider Response */}
         {showProviderResponse && review.providerResponse && (
           <div className="mt-4 rounded-lg bg-muted/50 p-3">
             <div className="flex items-center gap-2 mb-2">
@@ -147,7 +142,6 @@ export function ReviewCard({
           </div>
         )}
 
-        {/* Reported Badge */}
         {review.isReported && (
           <div className="mt-3 inline-flex items-center gap-1 rounded-full bg-yellow-100 px-2 py-0.5 text-xs text-yellow-800">
             <Flag className="h-3 w-3" />
@@ -155,14 +149,13 @@ export function ReviewCard({
           </div>
         )}
 
-        {/* Report Modal */}
         {showReportModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
             <div className="bg-background rounded-lg p-6 w-full max-w-md mx-4">
               <h3 className="text-lg font-semibold mb-4">Report Review</h3>
               <textarea
                 className="w-full h-24 p-3 border rounded-md resize-none text-sm"
-                placeholder="Please describe why you're reporting this review..."
+                placeholder="Describe why you are reporting this review..."
                 value={reportReason}
                 onChange={(e) => setReportReason(e.target.value)}
               />

@@ -7,31 +7,31 @@ import { motion } from "framer-motion";
 const categories = [
   {
     name: "Hostels",
-    description: "Find safe, affordable accommodation close to campus.",
+    description: "Safe, affordable accommodation close to campus.",
     icon: Home,
     accent: "text-amber-300",
   },
   {
     name: "Restaurants",
-    description: "Discover budget-friendly meals and local eateries nearby.",
+    description: "Affordable meals and local eateries nearby.",
     icon: ShoppingCart,
     accent: "text-teal-300",
   },
   {
     name: "Supermarkets",
-    description: "Stock up on essentials without going far from uni.",
+    description: "Daily groceries and essentials close to campus.",
     icon: Store,
     accent: "text-amber-300",
   },
   {
     name: "Pharmacies",
-    description: "Access healthcare products whenever you need them.",
+    description: "Medicines and healthcare supplies near campus.",
     icon: Plus,
     accent: "text-orange-300",
   },
   {
     name: "Salons",
-    description: "Look your best with trusted salons near your university.",
+    description: "Haircuts and grooming services near your university.",
     icon: Smile,
     accent: "text-orange-300",
   },
@@ -55,11 +55,9 @@ const item = {
 export default function ServicesSection() {
   return (
     <section id="services" className="relative py-28 px-6 overflow-hidden">
-      {/* Orb */}
       <div className="orb w-[400px] h-[400px] bg-amber-600 top-1/2 right-[-5%]" style={{ opacity: 0.08 }} />
 
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,11 +68,10 @@ export default function ServicesSection() {
           <p className="text-amber-300 text-sm font-medium tracking-widest uppercase mb-3">Services</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">What are you looking for?</h2>
           <p className="text-white/50 text-lg max-w-xl mx-auto">
-            Everything a student needs, organised and verified for you.
+            Essential student services, reviewed and listed in one place.
           </p>
         </motion.div>
 
-        {/* Grid */}
         <motion.div
           variants={container}
           initial="hidden"

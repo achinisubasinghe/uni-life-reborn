@@ -4,13 +4,13 @@ const links = {
   Platform: [
     { label: "Browse services", href: "/browse" },
     { label: "List your business", href: "/signup?role=provider" },
-    { label: "Student sign-up", href: "/signup" },
-    { label: "AI Chat (UniBot)", href: "/chat" },
+    { label: "Student sign up", href: "/signup" },
+    { label: "UniBot chat", href: "/chat" },
   ],
   Universities: [
     { label: "NSBM Green University", href: "#" },
     { label: "University of Colombo", href: "#" },
-    { label: "Uni. of Sri Jayewardenepura", href: "#" },
+    { label: "University of Sri Jayewardenepura", href: "#" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "#" },
@@ -24,7 +24,6 @@ export default function Footer() {
     <footer className="relative border-t border-white/[0.06] px-6 py-16">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-4 gap-10 mb-12">
-          {/* Brand column */}
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="w-7 h-7 rounded-xl glass-strong flex items-center justify-center">
@@ -33,7 +32,7 @@ export default function Footer() {
               <span className="text-white font-semibold tracking-tight">UniLife</span>
             </Link>
             <p className="text-white/40 text-sm leading-relaxed mb-6">
-              Making student life simpler, one campus at a time. Verified services, zero cost.
+              Verified campus services at zero cost for university students.
             </p>
             <a
               href="mailto:support@studenthub.lk"
@@ -43,7 +42,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Link columns */}
           {Object.entries(links).map(([group, items]) => (
             <div key={group}>
               <h4 className="text-white/40 text-xs font-semibold tracking-widest uppercase mb-4">{group}</h4>
@@ -63,10 +61,9 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
         <div className="border-t border-white/[0.06] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/25 text-sm">© {new Date().getFullYear()} UniLife. All rights reserved.</p>
-          <p className="text-white/25 text-sm">Made with care for students across Sri Lanka ✦</p>
+          <p className="text-white/25 text-sm">Built for students across Sri Lanka</p>
         </div>
       </div>
     </footer>

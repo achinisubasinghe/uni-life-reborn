@@ -30,25 +30,25 @@ const HOW_IT_WORKS = [
         icon: Plus,
         title: "Create a listing",
         description:
-            "Add your business details — name, category, location, hours, and photos. It only takes a few minutes.",
+            "Add your business name, category, location, hours, and photos.",
         accent: "text-amber-300",
         bg: "bg-amber-500/10 border-amber-400/20",
     },
     {
         step: "02",
         icon: Clock,
-        title: "Get reviewed & approved",
+        title: "Review and approval",
         description:
-            "Our team reviews every submission to ensure accuracy and quality. You'll be notified once approved.",
+            "Reviewers check every submission for accuracy and notify you once approved.",
         accent: "text-teal-300",
         bg: "bg-teal-500/10 border-teal-400/20",
     },
     {
         step: "03",
         icon: Users,
-        title: "Students discover you",
+        title: "Appear in searches",
         description:
-            "Thousands of university students browse UniLife daily to find exactly the services you offer.",
+            "University students browse UniLife by category, price, and distance from campus.",
         accent: "text-amber-300",
         bg: "bg-amber-500/10 border-amber-400/20",
     },
@@ -90,7 +90,6 @@ export default function OnboardingPage() {
 
     return (
         <div className="min-h-[calc(100vh-3.5rem)] lg:min-h-screen flex flex-col items-center justify-center py-10 px-4">
-            {/* Background orbs */}
             <div
                 className="orb w-[500px] h-[500px] bg-amber-600 top-[-10%] left-[20%] pointer-events-none"
                 style={{ opacity: 0.07 }}
@@ -101,7 +100,6 @@ export default function OnboardingPage() {
             />
 
             <div className="w-full max-w-lg">
-                {/* Logo */}
                 <div className="flex items-center gap-2 mb-10 justify-center">
                     <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center">
                         <span className="text-white text-sm font-bold">U</span>
@@ -110,7 +108,6 @@ export default function OnboardingPage() {
                     <Sparkles className="w-4 h-4 text-amber-300" />
                 </div>
 
-                {/* Progress steps */}
                 <div className="flex items-center justify-center gap-0 mb-10">
                     {STEPS.map((s, i) => (
                         <div key={s.id} className="flex items-center">
@@ -142,7 +139,6 @@ export default function OnboardingPage() {
                     ))}
                 </div>
 
-                {/* Card container */}
                 <div
                     className="relative overflow-hidden rounded-3xl p-8"
                     style={{
@@ -154,7 +150,6 @@ export default function OnboardingPage() {
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] to-transparent pointer-events-none rounded-3xl" />
 
                     <AnimatePresence custom={direction} mode="wait">
-                        {/* STEP 1 — Welcome */}
                         {step === 1 && (
                             <motion.div
                                 key="step1"
@@ -172,16 +167,14 @@ export default function OnboardingPage() {
 
                                 <div>
                                     <h1 className="text-2xl font-bold text-white mb-3">
-                                        Welcome, {firstName}! 🎉
+                                        Welcome, {firstName}
                                     </h1>
                                     <p className="text-white/55 text-base leading-relaxed">
-                                        Your provider account is ready. UniLife connects you with
-                                        thousands of university students across Sri Lanka who are
-                                        actively looking for services like yours.
+                                        Your provider account is ready. Add your business so
+                                        university students across Sri Lanka can find your services.
                                     </p>
                                 </div>
 
-                                {/* Quick stats */}
                                 <div className="w-full grid grid-cols-3 gap-3">
                                     {[
                                         { value: "2,500+", label: "Active students" },
@@ -210,13 +203,12 @@ export default function OnboardingPage() {
                                     onClick={goNext}
                                     className="w-full bg-white text-black hover:bg-white/90 rounded-xl font-semibold py-5"
                                 >
-                                    Let&apos;s get started
+                                    Continue
                                     <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
                             </motion.div>
                         )}
 
-                        {/* STEP 2 — How it works */}
                         {step === 2 && (
                             <motion.div
                                 key="step2"
@@ -233,7 +225,7 @@ export default function OnboardingPage() {
                                         How it works
                                     </h2>
                                     <p className="text-white/45 text-sm">
-                                        Your journey from listing to discovery in three steps.
+                                        Three steps from listing to student search.
                                     </p>
                                 </div>
 
@@ -290,7 +282,6 @@ export default function OnboardingPage() {
                             </motion.div>
                         )}
 
-                        {/* STEP 3 — Get started */}
                         {step === 3 && (
                             <motion.div
                                 key="step3"
@@ -313,7 +304,7 @@ export default function OnboardingPage() {
 
                                 <div>
                                     <h2 className="text-2xl font-bold text-white mb-3">
-                                        You&apos;re all set!
+                                        Account ready
                                     </h2>
                                     <p className="text-white/55 text-base leading-relaxed">
                                         Your provider account is active. Add your first business

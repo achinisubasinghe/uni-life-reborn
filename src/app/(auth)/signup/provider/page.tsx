@@ -7,7 +7,6 @@ export default function ProviderSignUpPage() {
       <div className="orb w-[600px] h-[600px] bg-teal-700 top-[-15%] right-[-10%]" style={{ opacity: 0.10 }} />
       <div className="orb w-[500px] h-[500px] bg-amber-600 bottom-[-10%] left-[-5%]" style={{ opacity: 0.10 }} />
 
-      {/* Left branding panel */}
       <div className="hidden lg:flex flex-col justify-between w-[40%] min-h-svh p-12 relative z-10"
         style={{ borderRight: '1px solid rgba(255,255,255,0.06)' }}
       >
@@ -24,19 +23,19 @@ export default function ProviderSignUpPage() {
               Provider account
             </div>
             <h2 className="text-4xl font-bold text-white leading-tight">
-              Reach{" "}<span className="gradient-text">thousands</span>{" "}of students
+              Reach{" "}<span className="gradient-text">university</span>{" "}students
             </h2>
             <p className="text-white/50 leading-relaxed">
-              List your hostel, food outlet, or service on UniLife and get discovered by students at Sri Lankan universities.
+              List your hostel, restaurant, or service so students at Sri Lankan universities can find your business.
             </p>
           </div>
 
           <div className="space-y-4">
             {[
-              { icon: Building2, text: "List unlimited businesses and services" },
-              { icon: BadgeCheck, text: "Verified badge builds trust instantly" },
+              { icon: Building2, text: "List your businesses and services" },
+              { icon: BadgeCheck, text: "Verified listings after admin approval" },
               { icon: TrendingUp, text: "Track views, saves, and inquiries" },
-              { icon: Globe, text: "Free listing — no subscription required" },
+              { icon: Globe, text: "Free listing with no subscription" },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-3">
                 <div className="flex size-8 items-center justify-center rounded-lg bg-teal-500/15 border border-teal-400/20 shrink-0">
@@ -51,7 +50,6 @@ export default function ProviderSignUpPage() {
         <p className="text-white/25 text-xs">&copy; {new Date().getFullYear()} UniLife. All rights reserved.</p>
       </div>
 
-      {/* Right form panel */}
       <div className="flex flex-1 flex-col items-center justify-center py-10 px-6 md:px-10 relative z-10">
         <div className="w-full max-w-lg">
           <ProviderSignUpForm />

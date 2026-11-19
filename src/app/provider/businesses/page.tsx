@@ -77,7 +77,7 @@ export default function ProviderBusinessesPage() {
       setBusinesses(prev => prev.filter(b => b.id !== businessId));
     } catch (error) {
       console.error("Error deleting business:", error);
-      alert("Failed to delete business. Please try again.");
+      alert("Could not delete business. Try again.");
     } finally {
       setDeletingId(null);
     }
@@ -87,7 +87,6 @@ export default function ProviderBusinessesPage() {
     ? businesses 
     : businesses.filter(b => b.status === filter);
 
-  // Stats
   const stats = {
     total: businesses.length,
     pending: businesses.filter(b => b.status === "pending").length,
@@ -105,7 +104,6 @@ export default function ProviderBusinessesPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">My Businesses</h1>
@@ -121,7 +119,6 @@ export default function ProviderBusinessesPage() {
         </Button>
       </div>
 
-      {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="cursor-pointer hover:bg-muted/50 transition-colors" onClick={() => setFilter("all")}>
           <CardHeader className="pb-2">
@@ -172,7 +169,6 @@ export default function ProviderBusinessesPage() {
         </Card>
       </div>
 
-      {/* Filter Pills */}
       <div className="flex gap-2 flex-wrap">
         {(["all", "pending", "approved", "rejected"] as const).map((status) => (
           <Button
@@ -190,7 +186,6 @@ export default function ProviderBusinessesPage() {
         ))}
       </div>
 
-      {/* Businesses List */}
       {filteredBusinesses.length === 0 ? (
         <Card>
           <CardContent className="py-12 text-center">
@@ -203,8 +198,8 @@ export default function ProviderBusinessesPage() {
             </h3>
             <p className="text-muted-foreground mb-4">
               {businesses.length === 0 
-                ? "Create your first business listing to get started"
-                : "Try changing the filter to see other businesses"
+                ? "Add your first business listing"
+                : "Change the filter to view other businesses"
               }
             </p>
             {businesses.length === 0 && (
@@ -226,7 +221,6 @@ export default function ProviderBusinessesPage() {
               <Card key={business.id} className="overflow-hidden">
                 <CardContent className="p-0">
                   <div className="flex flex-col md:flex-row">
-                    {/* Image */}
                     <div className="w-full md:w-48 h-48 md:h-auto bg-muted flex-shrink-0">
                       {business.images && business.images[0] ? (
                         <img
@@ -241,7 +235,6 @@ export default function ProviderBusinessesPage() {
                       )}
                     </div>
 
-                    {/* Content */}
                     <div className="flex-1 p-4">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
                         <div>
@@ -277,7 +270,6 @@ export default function ProviderBusinessesPage() {
                         </span>
                       </div>
 
-                      {/* Rejection Reason */}
                       {business.status === "rejected" && business.rejectionReason && (
                         <div className="bg-red-500/10 border border-red-400/20 rounded-lg p-3 mb-4">
                           <div className="flex items-start gap-2">
@@ -290,7 +282,6 @@ export default function ProviderBusinessesPage() {
                         </div>
                       )}
 
-                      {/* Actions */}
                       <div className="flex flex-wrap gap-2">
                         <Button variant="outline" size="sm" asChild>
                           <Link href={`/provider/businesses/${business.id}`}>
