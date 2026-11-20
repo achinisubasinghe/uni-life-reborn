@@ -2,6 +2,8 @@
 
 UniLife is a campus services directory and review platform for Sri Lankan university students, built with Next.js 16, Firebase Authentication, Cloud Firestore, and Groq. It connects students at NSBM Green University, the University of Colombo, and the University of Sri Jayewardenepura with verified nearby accommodation, dining, pharmacy, retail, and laundry providers.
 
+![UniLife application screenshot](docs/screenshot.png)
+
 ## Overview
 
 The application serves three roles across dedicated route groups, backed by Firestore collections and a Groq chat endpoint at `POST /api/chat`.
